@@ -1,0 +1,29 @@
+{
+  "name": "soho-magnify",
+  "version": "1.0.4",
+  "description": "Picture magnifying glass 圖片放大鏡",
+  "homepage": "https://www.sohophp.com/soho-magnify",
+  "author": "ZHAI Peng",
+  "contributors": "",
+  "dependencies": {
+    "jquery": "3.3.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sohophp/soho-magnify.git"
+  },
+  "main": "index.html",
+  "keywords": [
+    "图片缩放,图片放大,magnify,magnifying,picture"
+  ],
+  "bugs": {
+    "url": "https://github.com/sohophp/soho-magnify/issues"
+  },
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT"
+}

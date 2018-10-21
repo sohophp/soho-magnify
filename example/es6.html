@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>soho-magnify</title>
+    <style type="text/css">
+        .example-container {
+            text-align: center;
+            margin: 100px;
+        }
+
+        .example-container > div {
+            width: 300px;
+            margin: auto;
+        }
+        .example-img {
+            max-width: 100%;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="../src/css/soho-magnify.css"/>
+    <script src="../external/jquery.min.js"></script>
+    <script type="module">
+        import '../src/js/soho-magnify.module.js';
+        $(window).on('load', function () {
+            $(`img.example-img`).SohoMagnify();
+        });
+    </script>
+</head>
+<body>
+<div class="example-container">
+    <div>
+        <img src="123.jpg" class="example-img"/>
+    </div>
+</div>
+</body>
+</html>

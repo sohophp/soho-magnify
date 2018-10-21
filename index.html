@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <title>soho-magnify</title>
+    <style type="text/css">
+        body{
+            text-align: center;
+        }
+        .example-container {
+            text-align: center;
+            width:800px;
+            margin:auto;
+        }
+
+        .example-container > figure {
+            width: 300px;
+            margin: auto;
+        }
+
+        .example-img {
+            max-width: 100%;
+        }
+    </style>
+    <link type="text/css" rel="stylesheet" href="src/css/soho-magnify.css"/>
+    <script src="external/jquery.min.js"></script>
+    <script src="src/js/soho-magnify.js"></script>
+    <script>
+        $(window).on('load', function () {
+            $('img.example-img').SohoMagnify();
+        });
+    </script>
+</head>
+<body>
+<div class="example-container">
+    <div>
+        <h1>SOHO-MAGNIFY 图片放大镜</h1>
+    </div>
+    <figure>
+        <img src="example/123.jpg" class="example-img"/>
+    </figure>
+
+    <div style="text-align: left;">
+        <div>
+            <a href="example/es6.html" target="_blank">ECMAScript 6 的module版本</a>
+        </div>
+        <dl>
+            <dt>NPM</dt>
+            <dd>
+                <blockquote>npm i soho-magnify</blockquote>
+            </dd>
+            <dt>GIT</dt>
+            <dd>
+                <blockquote>
+                    git clone git@github.com:sohophp/soho-magnify
+                </blockquote>
+            </dd>
+            <dt>github.com项目网址</dt>
+            <dd><a href="https://github.com/sohophp/soho-magnify" target="_blank">https://github.com/sohophp/soho-magnify</a></dd>
+        </dl>
+
+
+    </div>
+</div>
+
+</body>
+</html>
