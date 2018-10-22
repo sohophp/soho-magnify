@@ -10,9 +10,9 @@
 
 !function (a, b) {
     'use strict';
-    "object" == typeof exports && "object" == typeof module ? module.exports = b(jQuery) : "function" == typeof define && define.amd ? define(['jquery'], b)  : "object" == typeof exports ? exports.SohoMagnify = b(jQuery) : a.SohoMagnify = b(jQuery);
+    "object" == typeof exports && "object" == typeof module ? module.exports = b(jQuery) : "function" == typeof define && define.amd ? define(['jquery'], b) : "object" == typeof exports ? exports.SohoMagnify = b(jQuery) : a.SohoMagnify = b(jQuery);
 
-}(this, function ($ ) {
+}(this, function ($) {
     'use strict';
 
     var SohoMagnify = function (element, options) {
@@ -27,14 +27,31 @@
                 .append('<div class="soho-magnify-large" />');
         }
 
+        this.$magnify = this.$element.parent('.soho-magnify');
+        this.$magnify_large = this.$element.siblings('.soho-magnify-large');
+
         var large = this.$element.attr('src');
         if (this.$element.data('large')) {
             large = this.$element.data('large');
         }
 
+        this.$magnify.css({
+            width: this.$element.width(),
+            height: this.$element.height(),
+            cursor: this.options.cursor
+        });
+
+        if (this.options.glass === 1) {
+            this.$magnify_large.addClass('soho-magnify-large-glass');
+        } else {
+            this.$magnify.css({
+                overflow: 'hidden'
+            });
+        }
+
         this.$element
             .siblings('.soho-magnify-large')
-            .css('background', 'url(\'' + large+'\') no-repeat');
+            .css('background', 'url(\'' + large + '\') no-repeat');
 
         this.$element
             .parent('.soho-magnify')
@@ -45,17 +62,17 @@
     };
 
     SohoMagnify.prototype = {
-        element:null,
-        $element:null,
+        element: null,
+        $element: null,
         event: 'mousemove',
         eventOut: 'mouseleave',
         namespace: 'soho-magnify',
         nativeWidth: 0,
         nativeHeight: 0,
 
-        getOptions:function(options) {
+        getOptions: function (options) {
 
-            options = $.extend({}, {delay: 0, zoom: 1}, options, this.$element.data());
+            options = $.extend({}, {delay: 0, zoom: 1, glass: 1, cursor: 'none'}, options, this.$element.data());
             if (options.delay && typeof options.delay === 'number') {
                 options.delay = {
                     show: options.delay,
@@ -65,9 +82,9 @@
             return options;
         },
 
-        check:function(e) {
+        check: function (e) {
 
-            var o=this,
+            var o = this,
                 container = $(e.currentTarget),
                 self = container.children('img'),
                 mag = container.children('.soho-magnify-large');
@@ -103,7 +120,9 @@
                         bgp = rx + 'px ' + ry + 'px',
                         px = mx - mag.width() / 2,
                         py = my - mag.height() / 2,
-                        bs = this.nativeWidth + 'px ' + this.nativeHeight + 'px';
+                        bs = this.nativeWidth + 'px ' + this.nativeHeight + 'px',
+                        w,
+                        h;
 
                     mag.css({
                         left: px,
@@ -111,11 +130,23 @@
                         backgroundPosition: bgp,
                         backgroundSize: bs
                     });
+
+                    if (this.options.glass === 1) {
+                        //w = 175;
+                        //h = 175;
+                    } else {
+                        w = this.nativeWidth;
+                        h = this.nativeHeight;
+                        mag.css({
+                            width: w,
+                            height: h,
+                        });
+                    }
                 }
             }
 
         },
-        destroy:function () {
+        destroy: function () {
             this.$element
                 .parent('.soho-magnify')
                 .off(this.event + '.' + this.namespace, $.proxy(this.check, this))

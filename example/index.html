@@ -11,29 +11,56 @@
             margin: 100px;
         }
 
-        .example-container > div {
-            width: 300px;
+        .example-container > figure {
+            width: 500px;
             margin: auto;
         }
 
         .example-img {
             max-width: 100%;
         }
+
     </style>
     <link type="text/css" rel="stylesheet" href="../src/css/soho-magnify.css"/>
     <script src="../external/jquery.min.js"></script>
     <script src="../src/js/soho-magnify.js"></script>
     <script>
         $(window).on('load', function () {
-            $('img.example-img').SohoMagnify();
+            $('img.example-img1').SohoMagnify({
+                glass:1
+            });
+            $('img.example-img2').SohoMagnify({
+                glass:0
+            });
+            $('img.example-img3').SohoMagnify({
+                glass:0,
+                cursor:'move'
+            });
         });
     </script>
 </head>
 <body>
 
 <div class="example-container">
-    <div>
-        <img src="123.jpg" class="example-img"/>
+
+    <div class="example-container">
+        <h2>1使用放大鏡</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img1"/>
+        </figure>
+    </div>
+
+    <div class="example-container">
+        <h2>2不使用放大鏡</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img2"/>
+        </figure>
+    </div>
+    <div class="example-container">
+        <h2>3不使用放大鏡加光標</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img3"/>
+        </figure>
     </div>
 </div>
 <script src="https://www.sohophp.com/js/stat.js"></script>

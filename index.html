@@ -34,7 +34,16 @@
 
     <script>
         $(window).on('load', function () {
-            $('img.example-img').SohoMagnify();
+            $('img.example-img1').SohoMagnify({
+                glass:1
+            });
+            $('img.example-img2').SohoMagnify({
+                glass:0
+            });
+            $('img.example-img3').SohoMagnify({
+                glass:0,
+                cursor:'move'
+            });
         });
     </script>
 </head>
@@ -60,9 +69,25 @@
     <div>
         <h1>SOHO-MAGNIFY 图片放大镜</h1>
     </div>
-    <figure>
-        <img src="example/123.jpg" class="example-img"/>
-    </figure>
+    <div class="example-container">
+        <h2>1使用放大鏡</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img1"/>
+        </figure>
+    </div>
+
+    <div class="example-container">
+        <h2>2不使用放大鏡</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img2"/>
+        </figure>
+    </div>
+    <div class="example-container">
+        <h2>3不使用放大鏡加光標</h2>
+        <figure>
+            <img src="27.jpg" class="example-img example-img3"/>
+        </figure>
+    </div>
 
     <div style="text-align: left;">
         <div>
