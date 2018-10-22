@@ -4,7 +4,7 @@
  * 圖片放大鏡
  * @see https://www.sohophp.com/soho-magnify
  * @author ZHAI Peng
- * @version 1.0.5
+ * @version 1.1.0
  * @dependencies jQuery
  */
 
@@ -115,33 +115,63 @@
                 }
 
                 if (mag.is(':visible')) {
-                    let rx = Math.round(mx / container.width() * this.nativeWidth - mag.width() / 2) * -1,
-                        ry = Math.round(my / container.height() * this.nativeHeight - mag.height() / 2) * -1,
-                        bgp = rx + 'px ' + ry + 'px',
-                        px = mx - mag.width() / 2,
-                        py = my - mag.height() / 2,
-                        bs = this.nativeWidth + 'px ' + this.nativeHeight + 'px',
-                        w,
-                        h;
-
-                    mag.css({
-                        left: px,
-                        top: py,
-                        backgroundPosition: bgp,
-                        backgroundSize: bs
-                    });
 
                     if (this.options.glass === 1) {
-                        //w = 175;
-                        //h = 175;
-                    } else {
-                        w = this.nativeWidth;
-                        h = this.nativeHeight;
+                        let rx = Math.round(mx / container.width() * this.nativeWidth - mag.width() / 2) * -1,
+                            ry = Math.round(my / container.height() * this.nativeHeight - mag.height() / 2) * -1,
+                            bgp = rx+'px '+ry+'px',
+                            px = mx - mag.width() / 2,
+                            py = my - mag.height() / 2,
+                            bs = this.nativeWidth +'px '+this.nativeHeight+'px' ;
+
                         mag.css({
-                            width: w,
-                            height: h,
+                            left: px,
+                            top: py,
+                            backgroundPosition: bgp,
+                            backgroundSize: bs
                         });
+
+                    } else {
+
+                        mag.css({
+                            width: this.nativeWidth,
+                            height: this.nativeHeight,
+                        });
+
+                        let
+                            maxleft = 0,
+                            maxtop = 0,
+                            minleft = (mag.width() - container.width()) * -1,
+                            mintop = (mag.height() - container.height()) * -1,
+                            left = Math.round((mx / container.width() * this.nativeWidth - container.width() / 2)) * -1,
+                            top = Math.round((my / container.height() * this.nativeHeight - container.height() / 2)) * -1,
+                            bs =  this.nativeWidth+'px '+this.nativeHeight+'px';
+
+                        if (left > maxleft) {
+                            left = maxleft;
+                        }
+
+                        if (top > maxtop) {
+                            top = maxtop;
+                        }
+
+                        if (left < minleft) {
+                            left = minleft;
+                        }
+
+                        if (top < mintop) {
+                            top = mintop;
+                        }
+
+                        mag.css({
+                            left: left,
+                            top: top,
+                            backgroundSize: bs
+                        });
+
                     }
+
+
                 }
             }
 
