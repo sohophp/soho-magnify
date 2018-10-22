@@ -4,13 +4,14 @@
  * 圖片放大鏡
  * @see https://www.sohophp.com/soho-magnify
  * @author ZHAI Peng
- * @version 1.0.0
+ * @version 1.0.5
  * @dependencies jQuery
  */
 
 export default class SohoMagnify {
 
     constructor(element, options) {
+
         this.element = element;
         this.$element = $(element);
         this.event = 'mousemove';
@@ -19,23 +20,38 @@ export default class SohoMagnify {
         this.options = this.getOptions(options);
         this.nativeWidth = 0;
         this.nativeHeight = 0;
+
         if (!this.$element.parent().hasClass('soho-magnify')) {
             this.$element.wrap('<div class="soho-magnify" />');
             this.$element.parent('.soho-magnify')
                 .append('<div class="soho-magnify-large" />');
         }
 
+        this.$magnify = this.$element.parent('.soho-magnify');
+        this.$magnify_large = this.$element.siblings('.soho-magnify-large');
+
         let large = this.$element.attr('src');
         if (this.$element.data('large')) {
             large = this.$element.data('large');
         }
 
-        this.$element
-            .siblings('.soho-magnify-large')
-            .css('background', `url('${large}') no-repeat`);
+        this.$magnify.css({
+            width: this.$element.width(),
+            height: this.$element.height(),
+            cursor: this.options.cursor
+        });
 
-        this.$element
-            .parent('.soho-magnify')
+        if (this.options.glass === 1) {
+            this.$magnify_large.addClass('soho-magnify-large-glass');
+        } else {
+            this.$magnify.css({
+                overflow: 'hidden'
+            });
+        }
+
+        this.$magnify_large.css('background', `url('${large}') no-repeat`);
+
+        this.$magnify
             .on(`${this.event}.${this.namespace}`, jQuery.proxy(this.check, this))
             .on(`${this.eventOut}.${this.namespace}`, jQuery.proxy(this.check, this))
             .on(`touchmove.${this.namespace}`, jQuery.proxy(this.check, this))
@@ -44,7 +60,7 @@ export default class SohoMagnify {
     }
 
     getOptions(options = {delay: 0, zoom: 1}) {
-        options = jQuery.extend({}, {delay: 0, zoom: 1}, options, this.$element.data());
+        options = jQuery.extend({}, {delay: 0, zoom: 1, glass: 1,cursor:'none'}, options, this.$element.data());
         if (options.delay && typeof options.delay === 'number') {
             options.delay = {
                 show: options.delay,
@@ -65,12 +81,16 @@ export default class SohoMagnify {
             image.addEventListener('load', () => {
                 this.nativeWidth = image.width * this.options.zoom;
                 this.nativeHeight = image.height * this.options.zoom;
+
                 if (this.options.zoom === 1) {
+
                     if (this.nativeWidth <= container.width()) {
-                        this.nativeWidth *= 1.5;
-                        this.nativeHeight *= 1.5;
+                        this.nativeWidth  = container.width()*2;
+                        this.nativeHeight  = container.width()*2;
                     }
+
                 }
+
             }, false);
         } else {
             let magnifyOffset = container.offset();
@@ -89,7 +109,10 @@ export default class SohoMagnify {
                     bgp = `${rx}px ${ry}px`,
                     px = mx - mag.width() / 2,
                     py = my - mag.height() / 2,
-                    bs = `${this.nativeWidth}px ${this.nativeHeight}px`;
+                    bs = `${this.nativeWidth}px ${this.nativeHeight}px`,
+                    w,
+                    h;
+
 
                 mag.css({
                     left: px,
@@ -97,6 +120,19 @@ export default class SohoMagnify {
                     backgroundPosition: bgp,
                     backgroundSize: bs
                 });
+
+                if (this.options.glass === 1) {
+                    //w = 175;
+                    //h = 175;
+                } else {
+                    w = this.nativeWidth;
+                    h = this.nativeHeight;
+                    mag.css({
+                        width: w,
+                        height: h,
+                    });
+                }
+
             }
         }
         return e.preventDefault();

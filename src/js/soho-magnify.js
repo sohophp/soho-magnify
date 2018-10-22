@@ -4,7 +4,7 @@
  * 圖片放大鏡
  * @see https://www.sohophp.com/soho-magnify
  * @author ZHAI Peng
- * @version 1.0.4
+ * @version 1.0.5
  * @dependencies jQuery
  */
 
