@@ -41,6 +41,8 @@ export default class SohoMagnify {
             cursor: this.options.cursor
         });
 
+
+
         if (this.options.glass === 1) {
             this.$magnify_large.addClass('soho-magnify-large-glass');
         } else {
