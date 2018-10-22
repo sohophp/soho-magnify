@@ -119,7 +119,7 @@ export default class SohoMagnify {
                     backgroundSize: bs
                 });
 
-                if (this.options.glass) {
+                if (this.options.glass === 1) {
                     //w = 175;
                     //h = 175;
                 } else {
