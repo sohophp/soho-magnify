@@ -48,7 +48,6 @@ export default class SohoMagnify {
             });
         }
 
-
         this.$element
             .siblings('.soho-magnify-large')
             .css('background', `url('${large}') no-repeat`);
