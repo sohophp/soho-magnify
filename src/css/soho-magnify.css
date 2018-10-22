@@ -1,6 +1,7 @@
 .soho-magnify {
   position: relative;
-  cursor: none; }
+  cursor: none;
+}
 
 .soho-magnify-large {
   position: absolute;

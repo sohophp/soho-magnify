@@ -37,7 +37,8 @@ export default class SohoMagnify {
 
         this.$magnify.css({
             width: this.$element.width(),
-            height: this.$element.height()
+            height: this.$element.height(),
+            cursor: this.options.cursor
         });
 
         if (this.options.glass === 1) {
@@ -62,7 +63,7 @@ export default class SohoMagnify {
     }
 
     getOptions(options = {delay: 0, zoom: 1}) {
-        options = jQuery.extend({}, {delay: 0, zoom: 1, glass: 1}, options, this.$element.data());
+        options = jQuery.extend({}, {delay: 0, zoom: 1, glass: 1,cursor:'none'}, options, this.$element.data());
         if (options.delay && typeof options.delay === 'number') {
             options.delay = {
                 show: options.delay,
@@ -83,12 +84,16 @@ export default class SohoMagnify {
             image.addEventListener('load', () => {
                 this.nativeWidth = image.width * this.options.zoom;
                 this.nativeHeight = image.height * this.options.zoom;
+
                 if (this.options.zoom === 1) {
+
                     if (this.nativeWidth <= container.width()) {
-                        this.nativeWidth *= 1.5;
-                        this.nativeHeight *= 1.5;
+                        this.nativeWidth  = container.width()*2;
+                        this.nativeHeight  = container.width()*2;
                     }
+
                 }
+
             }, false);
         } else {
             let magnifyOffset = container.offset();

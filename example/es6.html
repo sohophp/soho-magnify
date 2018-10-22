@@ -19,6 +19,7 @@
         .example-img {
             max-width: 100%;
         }
+
     </style>
 
     <link type="text/css" rel="stylesheet" href="../src/css/soho-magnify.css"/>
@@ -31,6 +32,10 @@
             });
             $(`img.example-img2`).SohoMagnify({
                 glass:0
+            });
+            $(`img.example-img3`).SohoMagnify({
+                glass:0,
+                cursor:'move'
             });
         });
     </script>
@@ -49,9 +54,13 @@
     <figure>
         <img src="27.jpg" class="example-img example-img2"/>
     </figure>
-
 </div>
-
+<div class="example-container">
+    <h2>不使用放大鏡加光標</h2>
+    <figure>
+        <img src="27.jpg" class="example-img example-img3"/>
+    </figure>
+</div>
 
 <script src="https://www.sohophp.com/js/stat.js"></script>
 
