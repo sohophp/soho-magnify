@@ -10,7 +10,6 @@
 
 !function (a, b) {
     'use strict';
-
     "object" == typeof exports && "object" == typeof module ? module.exports = b(jQuery) : "function" == typeof define && define.amd ? define(['jquery'], b)  : "object" == typeof exports ? exports.SohoMagnify = b(jQuery) : a.SohoMagnify = b(jQuery);
 
 }(this, function ($ ) {

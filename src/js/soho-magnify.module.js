@@ -51,12 +51,9 @@ export default class SohoMagnify {
             });
         }
 
-        this.$element
-            .siblings('.soho-magnify-large')
-            .css('background', `url('${large}') no-repeat`);
+        this.$magnify_large.css('background', `url('${large}') no-repeat`);
 
-        this.$element
-            .parent('.soho-magnify')
+        this.$magnify
             .on(`${this.event}.${this.namespace}`, jQuery.proxy(this.check, this))
             .on(`${this.eventOut}.${this.namespace}`, jQuery.proxy(this.check, this))
             .on(`touchmove.${this.namespace}`, jQuery.proxy(this.check, this))
