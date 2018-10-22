@@ -64,34 +64,64 @@
     </header>
 </div>
 
-<div class="example-container">
+<div class="container example-container">
     <div>
         <h1>SOHO-MAGNIFY 图片放大镜</h1>
     </div>
     <div class="example-container">
-        <h2>1使用放大鏡</h2>
+        <h2>1.使用放大鏡</h2>
         <figure>
             <img src="example/27.jpg" class="example-img example-img1"/>
         </figure>
+        <hr/>
+        <pre class="text-justify alert alert-secondary">
+
+                  $(&#39;img.example-img&#39;).SohoMagnify({
+                      glass:1
+                  });
+        </pre>
     </div>
 
     <div class="example-container">
-        <h2>2不使用放大鏡</h2>
+        <h2>2.不使用放大鏡</h2>
         <figure>
             <img src="example/27.jpg" class="example-img example-img2"/>
         </figure>
+        <hr/>
+        <pre class="text-justify alert alert-secondary">
+
+                  $(&#39;img.example-img&#39;).SohoMagnify({
+                      glass:0
+                  });
+        </pre>
     </div>
     <div class="example-container">
-        <h2>3不使用放大鏡加光標</h2>
+        <h2>3.不使用放大鏡加光標</h2>
         <figure>
             <img src="example/27.jpg" class="example-img example-img3"/>
         </figure>
+        <hr/>
+        <pre class="text-justify alert alert-secondary">
+                  $(&#39;img.example-img&#39;).SohoMagnify({
+                      glass:1,
+                      cursor:'move'
+                  });
+        </pre>
     </div>
+</div>
 
+<div class="container">
     <div style="text-align: left;">
         <div>
-            <a href="example/es6.html" target="_blank">ECMAScript 6 的module版本</a>
+            <a class="btn btn-primary" target="_blank" data-toggle="collapse" href="example/es6.html" role="button" aria-expanded="false" aria-controls="collapseExample">
+                ECMAScript 6 的 module 版本
+            </a>
+            <a class="btn btn-primary" target="_blank" data-toggle="collapse" href="example/es6.html" role="button" aria-expanded="false" aria-controls="collapseExample">
+                支持IE通用版本
+            </a>
+
         </div>
+        <hr />
         <dl>
             <dt>NPM</dt>
             <dd>
@@ -106,9 +136,20 @@
             <dt>github.com项目网址</dt>
             <dd><a href="https://github.com/sohophp/soho-magnify" target="_blank">https://github.com/sohophp/soho-magnify</a></dd>
         </dl>
+        <h3>使用方法</h3>
+        <pre  class="alert alert-secondary" role="alert">
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;src/css/soho-magnify.css&quot;/&gt;
+&lt;script src=&quot;external/jquery.min.js&quot;&gt;&lt;/script&gt;
+&lt;script src=&quot;src/js/soho-magnify.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+&nbsp; &nbsp; $(window).on(&#39;load&#39;, function () {
+&nbsp; &nbsp; &nbsp; &nbsp; $(&#39;img.example-img&#39;).SohoMagnify();
+&nbsp; &nbsp; });
+&lt;/script&gt;
+        </pre>
     </div>
 </div>
-<br /><br /><br /><br /><br />
+
 <footer class="blog-footer">
     <p>&copy; sohophp.com 2018</p>
     <p>黑ICP备18003726号-1</p>
