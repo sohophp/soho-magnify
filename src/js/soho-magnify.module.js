@@ -11,6 +11,7 @@
 export default class SohoMagnify {
 
     constructor(element, options) {
+
         this.element = element;
         this.$element = $(element);
         this.event = 'mousemove';
@@ -19,16 +20,34 @@ export default class SohoMagnify {
         this.options = this.getOptions(options);
         this.nativeWidth = 0;
         this.nativeHeight = 0;
+
         if (!this.$element.parent().hasClass('soho-magnify')) {
             this.$element.wrap('<div class="soho-magnify" />');
             this.$element.parent('.soho-magnify')
                 .append('<div class="soho-magnify-large" />');
         }
 
+        this.$magnify = this.$element.parent('.soho-magnify');
+        this.$magnify_large = this.$element.siblings('.soho-magnify-large');
+
         let large = this.$element.attr('src');
         if (this.$element.data('large')) {
             large = this.$element.data('large');
         }
+
+        this.$magnify.css({
+            width: this.$element.width(),
+            height: this.$element.height()
+        });
+
+        if (this.options.glass === 1) {
+            this.$magnify_large.addClass('soho-magnify-large-glass');
+        } else {
+            this.$magnify.css({
+                overflow: 'hidden'
+            });
+        }
+
 
         this.$element
             .siblings('.soho-magnify-large')
@@ -44,7 +63,7 @@ export default class SohoMagnify {
     }
 
     getOptions(options = {delay: 0, zoom: 1}) {
-        options = jQuery.extend({}, {delay: 0, zoom: 1}, options, this.$element.data());
+        options = jQuery.extend({}, {delay: 0, zoom: 1, glass: 1}, options, this.$element.data());
         if (options.delay && typeof options.delay === 'number') {
             options.delay = {
                 show: options.delay,
@@ -89,7 +108,10 @@ export default class SohoMagnify {
                     bgp = `${rx}px ${ry}px`,
                     px = mx - mag.width() / 2,
                     py = my - mag.height() / 2,
-                    bs = `${this.nativeWidth}px ${this.nativeHeight}px`;
+                    bs = `${this.nativeWidth}px ${this.nativeHeight}px`,
+                    w,
+                    h;
+
 
                 mag.css({
                     left: px,
@@ -97,6 +119,19 @@ export default class SohoMagnify {
                     backgroundPosition: bgp,
                     backgroundSize: bs
                 });
+
+                if (this.options.glass) {
+                    //w = 175;
+                    //h = 175;
+                } else {
+                    w = this.nativeWidth;
+                    h = this.nativeHeight;
+                    mag.css({
+                        width: w,
+                        height: h,
+                    });
+                }
+
             }
         }
         return e.preventDefault();

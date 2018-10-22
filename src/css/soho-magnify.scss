@@ -6,7 +6,13 @@
 }
 
 .soho-magnify-large {
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 100%;
+}
 
+.soho-magnify-large-glass {
   position: absolute;
   display: none;
   width: 175px;

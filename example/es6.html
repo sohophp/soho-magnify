@@ -11,10 +11,11 @@
             margin: 100px;
         }
 
-        .example-container > div {
+        .example-container > figure {
             width: 300px;
             margin: auto;
         }
+
         .example-img {
             max-width: 100%;
         }
@@ -25,19 +26,29 @@
     <script type="module">
         import '../src/js/soho-magnify.module.js';
         $(window).on('load', function () {
-            $(`img.example-img`).SohoMagnify();
+            $(`img.example-img1`).SohoMagnify({
+                glass:1
+            });
+            $(`img.example-img2`).SohoMagnify({
+                glass:0
+            });
         });
     </script>
 </head>
 <body>
 
-
 <div class="example-container">
-    <div>
-        <img src="123.jpg" class="example-img"/>
-    </div>
+    <figure>
+        <img src="123.jpg" class="example-img example-img1"/>
+    </figure>
 </div>
 
+<div class="example-container">
+    <figure>
+        <img src="27.jpg" class="example-img example-img2"/>
+    </figure>
+
+</div>
 
 
 <script src="https://www.sohophp.com/js/stat.js"></script>
