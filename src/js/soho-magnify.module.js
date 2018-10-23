@@ -7,7 +7,6 @@
  * @version 1.1.0
  * @dependencies jQuery
  */
-
 export default class SohoMagnify {
     constructor(element, options) {
 
