@@ -8,7 +8,6 @@
  * @dependencies jQuery
  */
 export default class SohoMagnify {
-
     constructor(element, options) {
 
         this.element = element;
