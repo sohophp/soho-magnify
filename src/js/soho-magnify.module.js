@@ -45,6 +45,7 @@ export default class SohoMagnify {
             this.$magnify.css({
                 overflow: 'hidden'
             });
+
         }
 
         this.$magnify_large.css('background', `url('${large}') no-repeat`);

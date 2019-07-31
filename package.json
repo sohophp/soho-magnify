@@ -1,13 +1,12 @@
 {
   "name": "soho-magnify",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Picture magnifying glass 圖片放大鏡",
-  "homepage": "https://www.sohophp.com/soho-magnify",
+  "homepage": "https://sohophp.com/soho-magnify",
   "author": "ZHAI Peng",
   "contributors": "",
   "dependencies": {
-    "@babel/polyfill": "^7.0.0",
-    "jquery": "3.3.1"
+    "jquery": "^3.4.1"
   },
   "repository": {
     "type": "git",
@@ -28,10 +27,9 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/cli": "^7.1.2",
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-transform-arrow-functions": "^7.0.0",
-    "@babel/preset-env": "^7.1.0",
-    "babel-cli": "^6.26.0"
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.5.5"
   }
 }
